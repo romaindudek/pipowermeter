@@ -7,7 +7,7 @@ Measure DC power out of a solar panel or a wind turbine with raspberry pi zero W
 - Set the periodicity of the measurement (in minutes)
 - Generate .csv files
     - Append one line for every measure
-    - Device name | date/time | value (w) | [ optional weather infos via openweathermap ]
+    - Device name | location | date/time | value (w) | [ optional weather infos via openweathermap ]
 - OpenWeathermap infos (you need an internet connection)
     - Temperature (°C) | Wind speed (Km/h) | Cloudiness (%)
 
