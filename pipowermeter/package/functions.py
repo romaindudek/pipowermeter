@@ -60,6 +60,9 @@ class Installation:
     def uninstall(self):
         print("Start Uninstalling !")
 
+    def trash(self):
+        print("Start Trashing !")
+
 class Exec:
     """
     Functions used for execution
