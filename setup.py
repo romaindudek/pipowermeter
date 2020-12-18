@@ -9,7 +9,7 @@ def main(argv):
     init.prt_header()
 
     ser = ServiceManage()
-    print("Pi powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
+    print("Pi Powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
 
     if (len(argv) == 1):
         if argv[0] == '-h':

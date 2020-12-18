@@ -10,7 +10,7 @@ class AppInit:
     """
 
     def __init__(self):
-        self.app_name = "Pi Power-meter"
+        self.app_name = "Pi PowerMeter"
         self.version = "0.0.1"
         self.sep  =  "###########################"
         self.hstr = """
@@ -80,7 +80,7 @@ class Questions:
     def __init__(self, q):
         self.q = q
     
-class ServiceManage():
+class ServiceManage:
 
     def __init__(self):
         self.serviceName = "pipowermeter"
