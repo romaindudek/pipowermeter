@@ -5,28 +5,39 @@ import sys
 from pipowermeter.package.functions import *
 
 def main(argv):
-    infos = AppInfos()
-    infos.prtHeader()
+    init = AppInit()
+    init.prt_header()
 
-    if (len(argv) > 0):
+    ser = ServiceManage()
+    print("Pi Powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
+
+    if (len(argv) == 1):
         if argv[0] == '-h':
-            print (hstr)
+            print (init.hstr)
             sys.exit()
         elif argv[0] == "install":
-            print("installation !")
+            inst = Installation()
+            inst.install()
+
         elif argv[0] == "uninstall":
-            print("uninstallation !")
+            inst = Installation()
+            inst.uninstall()
+
         elif argv[0] == "trash":
-            print("trash !")
+            inst = Installation()
+            inst.trash()
+
         elif argv[0] == "start":
-            print("start !")
+            inst = Exec()
+            inst.m_start()
         elif argv[0] == "stop":
-            print("stop !")
+            inst = Exec()
+            inst.m_stop()
         else:
-            print (infos.hstr)
+            print (init.hstr)
             sys.exit()
     else:
-            print (infos.hstr)
+            print (init.hstr)
             sys.exit()
 
 
