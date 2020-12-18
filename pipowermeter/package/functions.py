@@ -13,9 +13,9 @@ class AppInit:
         self.version = "0.0.1"
         self.sep  =  "###########################"
         self.hstr = """
-> Usage : ./setup.py [option]
+* Usage : ./setup.py [option]
 
-> Available options :
+* Available options :
 
     install     : Install the application (questions will be asked)
     uninstall   : Uninstall the application (wont remove data directory)
