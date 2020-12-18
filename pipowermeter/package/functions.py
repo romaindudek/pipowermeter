@@ -3,6 +3,8 @@
 import os
 import sys
 
+
+
 class AppInfos():
     """
     Base Information and printing instructions
