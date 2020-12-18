@@ -6,7 +6,10 @@ from pipowermeter.package.functions import *
 
 def main(argv):
     init = AppInit()
-    init.prtHeader()
+    init.prt_header()
+
+    ser = ServiceManage()
+    print("Pi powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
 
     if (len(argv) == 1):
         if argv[0] == '-h':
@@ -17,13 +20,19 @@ def main(argv):
             inst.install()
 
         elif argv[0] == "uninstall":
-            print("uninstallation !")
+            inst = Installation()
+            inst.uninstall()
+
         elif argv[0] == "trash":
-            print("trash !")
+            inst = Installation()
+            inst.trash()
+
         elif argv[0] == "start":
-            print("start !")
+            inst = Exec()
+            inst.m_start()
         elif argv[0] == "stop":
-            print("stop !")
+            inst = Exec()
+            inst.m_stop()
         else:
             print (init.hstr)
             sys.exit()

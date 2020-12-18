@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import subprocess
 
 class AppInit:
     """
@@ -25,13 +26,13 @@ class AppInit:
     stop        : Stop measurement project"""
         self.system = os.uname()
 
-    def prtHeader(self):
+    def prt_header(self):
         """
         Print header
         """
         print(f"{bcolors.HEADER}%s\n%s v %s\n%s{bcolors.ENDC}" %(self.sep, self.app_name, self.version, self.sep))
         
-    def syscheck(self):
+    def sys_check(self):
         """
         Print system information and ask for action if system is not Raspberry pi
         """
@@ -50,10 +51,56 @@ class Installation:
     """
 
     def __init__(self):
-        AppInit().syscheck()
+        AppInit().sys_check()
+        self.service_present = True if subprocess.run(["sudo apt list --installed 2>/dev/null | grep pipowermeter"], shell=True).returncode != 1 else False
     
     def install(self):
+        print("Start Installing !")
+
+    def uninstall(self):
+        print("Start Uninstalling !")
+
+class Exec:
+    """
+    Functions used for execution
+    """
+    def __init__(self):
         pass
+    
+    def m_start(self):
+        print("Starting measurement")
+
+    def m_stop(self):
+        print("Stopping measurement")
+
+class Questions:
+    """
+    functions used for interactions
+    """
+    def __init__(self, q):
+        self.q = q
+    
+class ServiceManage():
+
+    def __init__(self):
+        self.serviceName = "pipowermeter"
+        self.isActive = self.check_service_property("ActiveState")
+        self.isLoaded = self.check_service_property("LoadState")
+    
+    def check_service_property(self, propName):
+        ret = subprocess.run(["systemctl", "show", self.serviceName, "--property=" + propName], capture_output=True)
+        ret = self.active_state_from_stdout(ret.stdout, propName)
+        return ret
+
+    def active_state_from_stdout(self, stdoutStr, propName):
+        ret = stdoutStr.decode("utf-8")
+        rem = propName + "="
+        ret = ret.replace(rem, "").replace("\n", "")
+        if (ret == "active" or ret == "loaded"):
+            return True
+        else:
+            return False
+
 
 
 class bcolors:
