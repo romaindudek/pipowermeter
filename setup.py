@@ -5,15 +5,17 @@ import sys
 from pipowermeter.package.functions import *
 
 def main(argv):
-    infos = AppInfos()
-    infos.prtHeader()
+    init = AppInit()
+    init.prtHeader()
 
-    if (len(argv) > 0):
+    if (len(argv) == 1):
         if argv[0] == '-h':
-            print (hstr)
+            print (init.hstr)
             sys.exit()
         elif argv[0] == "install":
-            print("installation !")
+            inst = Installation()
+            inst.install()
+
         elif argv[0] == "uninstall":
             print("uninstallation !")
         elif argv[0] == "trash":
@@ -23,10 +25,10 @@ def main(argv):
         elif argv[0] == "stop":
             print("stop !")
         else:
-            print (infos.hstr)
+            print (init.hstr)
             sys.exit()
     else:
-            print (infos.hstr)
+            print (init.hstr)
             sys.exit()
 
 
