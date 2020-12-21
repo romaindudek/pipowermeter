@@ -4,6 +4,8 @@ import os
 import sys
 import subprocess
 
+def test_my_lib():
+    print("it works !")
 class AppInit:
     """
     Base Information and printing instructions

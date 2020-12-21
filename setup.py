@@ -5,6 +5,7 @@ import sys
 from pipowermeter.package.functions import *
 
 def main(argv):
+    test_my_lib()
     init = AppInit()
     init.prt_header()
 
