@@ -11,10 +11,12 @@ class MySettings:
     """
     def __init__(self):
         self.baseDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-        print("basedir : " + self.baseDir)
-        self.locals = self.get_local_dirname()
-        self.deviceName = self.get_or_set_local("deviceName", "pipowermeter1", hide=True)
-        self.location = self.get_or_set_local("location", "Dieppe", hide=True)
+        self.locals = self.local_dir(".locals")
+        self.locals = self.get_or_set_local("locals", self.locals, hide=True)['varSet']
+        self.baseDir = self.get_or_set_local("baseDir", self.baseDir, hide=True)['varSet']
+        self.datas = self.local_dir("datas")
+        self.deviceName = self.get_or_set_local("deviceName", "pipowermeter1", hide=True)['varSet']
+        self.location = self.get_or_set_local("location", "Dieppe", hide=True)['varSet']
     
     def get_or_set_local(self, localSetting, settingValue, hide=False):
         """
@@ -22,16 +24,27 @@ class MySettings:
         creates it if it is not present.
         """
         if hide:
-            local_filepath = self.locals + '.' + localSetting
+            localFilePath = self.locals + '.' + localSetting
         else:
-            local_filepath = self.locals + localSetting
-        return pickle_gt_or_set(local_filepath, settingValue)
+            localFilePath = self.locals + localSetting
+        return pickle_gt_or_set(localFilePath, settingValue)
 
+    def overwrite_local(self, localSetting, settingValue, hide=False):
+        """
+        Overwrite a local setting
+        """
+        if hide:
+            localFilePath = self.locals + '.' + localSetting
+        else:
+            localFilePath = self.locals + localSetting
+        return pickle_wr(localFilePath, settingValue)
 
+    def local_dir(self, dirName):
+        """
 
-    def get_local_dirname(self):
-        localdirname = self.baseDir + os.path.sep + ".locals" + os.path.sep
-        print("localdirname : " + localdirname)
+        """
+        localdirname = self.baseDir + os.path.sep + dirName + os.path.sep
+        print(dirName + " : " + localdirname)
         if not os.path.exists(localdirname):
             os.makedirs(localdirname)
         return localdirname

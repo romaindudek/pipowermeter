@@ -5,25 +5,25 @@ import sys
 import subprocess
 import pickle
 
-def pickle_gt_or_set(file_path, var_set):
+def pickle_gt_or_set(filePath, varSet):
     """
     Get or sets datas in a pickle file,
     creates it if it is not present.
     """
-    if os.path.isfile(file_path) :
-        with open(file_path, 'rb') as f:
-            var_set = pickle.load(f)
-        return {"var_set": var_set, "action": "get"}
+    if os.path.isfile(filePath) :
+        with open(filePath, 'rb') as f:
+            varSet = pickle.load(f)
+        return {"varSet": varSet, "action": "get"}
     else:
-        pickle_wr(file_path, var_set)
-        return {"var_set": var_set, "action": "set"}
+        pickle_wr(filePath, varSet)
+        return {"varSet": varSet, "action": "set"}
 
-def pickle_wr(file_path, var_set):
+def pickle_wr(filePath, varSet):
     """
     Write a pickle file
     """
-    with open(file_path, 'wb') as f:
-        pickle.dump(var_set, f)
+    with open(filePath, 'wb') as f:
+        pickle.dump(varSet, f)
 
 class AppInit:
     """

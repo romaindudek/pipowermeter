@@ -10,6 +10,8 @@ from pipowermeter.package.output import OutputMeasure
 def main(argv):
 
     output = OutputMeasure()
+    output.print_measure()
+    print(output.line_measure())
 
     init = AppInit()
     init.prt_header()
