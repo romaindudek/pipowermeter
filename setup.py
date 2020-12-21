@@ -3,8 +3,13 @@
 import sys
 
 from pipowermeter.package.functions import *
+from pipowermeter.package.measurement import pwrmesure
+
 
 def main(argv):
+    mesure = pwrmesure()
+    print(mesure)
+
     test_my_lib()
     init = AppInit()
     init.prt_header()
