@@ -4,13 +4,13 @@ import sys
 import time
 
 from pipowermeter.package.functions import *
-from pipowermeter.package.measurement import PowerMeasure
+from pipowermeter.package.output import OutputMeasure
 
 
 def main(argv):
 
+    output = OutputMeasure()
 
-    test_my_lib()
     init = AppInit()
     init.prt_header()
 

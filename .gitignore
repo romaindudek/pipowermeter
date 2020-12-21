@@ -3,4 +3,5 @@ pipowermeter/__pycache__/
 pipowermeter/package/__pycache__/
 *.py[cod]
 .DS_Store
+.locals
 data

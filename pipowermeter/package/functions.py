@@ -3,9 +3,28 @@
 import os
 import sys
 import subprocess
+import pickle
 
-def test_my_lib():
-    print("it works !")
+def pickle_gt_or_set(file_path, var_set):
+    """
+    Get or sets datas in a pickle file,
+    creates it if it is not present.
+    """
+    if os.path.isfile(file_path) :
+        with open(file_path, 'rb') as f:
+            var_set = pickle.load(f)
+        return {"var_set": var_set, "action": "get"}
+    else:
+        pickle_wr(file_path, var_set)
+        return {"var_set": var_set, "action": "set"}
+
+def pickle_wr(file_path, var_set):
+    """
+    Write a pickle file
+    """
+    with open(file_path, 'wb') as f:
+        pickle.dump(var_set, f)
+
 class AppInit:
     """
     Base Information and printing instructions

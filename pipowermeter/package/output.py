@@ -6,6 +6,9 @@ from .measurement import PowerMeasure
 
 my_settings = MySettings()
 
+print(my_settings.locals)
+print(my_settings.deviceName)
+
 class OutputMeasure:
     
     def __init__(self):
