@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import logging
 import time
@@ -18,15 +19,26 @@ def read():
     print("Shunt voltage  : %.3f mV" % ina.shunt_voltage())
     print("Power          : %.3f mW" % ina.power())
 
-def pwrmesure():
-    ina = INA219(SHUNT_OHMS, MAX_EXPECTED_AMPS)
-    ina.configure(ina.RANGE_16V, ina.GAIN_AUTO)
+class PowerMeasure:
 
-    return({
-        "voltage":ina.voltage(), 
-        "current":ina.current(),
-        "power": ina.power()
-        })
+    def __init__(self):
+        self.pwr_measure()
+        if self.error != False:
+            self.voltage = None
+            self.current = None
+            self.power = None
+
+    def pwr_measure(self):
+        try:
+            ina = INA219(SHUNT_OHMS, MAX_EXPECTED_AMPS)
+            ina.configure(ina.RANGE_16V, ina.GAIN_AUTO)
+            self.voltage = round(ina.voltage(),1)
+            self.current = round(ina.current(), 1)
+            self.power = round(ina.power()/100, 1)
+            self.error = False 
+
+        except Exception as e:
+            self.error = str(e)
 
 if __name__ == "__main__":
     while True :

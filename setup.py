@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
+import time
 
 from pipowermeter.package.functions import *
-from pipowermeter.package.measurement import pwrmesure
+from pipowermeter.package.measurement import PowerMeasure
 
 
 def main(argv):
-    mesure = pwrmesure()
-    print(mesure)
+
 
     test_my_lib()
     init = AppInit()
