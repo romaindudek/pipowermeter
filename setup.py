@@ -5,26 +5,15 @@ import time
 
 
 from pipowermeter.package.functions import *
-from pipowermeter.package.output import OutputMeasure, mySettings
+from pipowermeter.package.installation import Installation
 
 
 def main(argv):
     
-    while True:
-        output = OutputMeasure()
-        output.print_measure()
-        output.line_measure()
-        time.sleep(mySettings.timeDelay)
-    
-
-
-    
-
     init = AppInit()
     init.prt_header()
 
-    ser = ServiceManage()
-    print("Pi Powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
+    
 
     if (len(argv) == 1):
         if argv[0] == '-h':
@@ -43,6 +32,9 @@ def main(argv):
             inst.trash()
 
         elif argv[0] == "start":
+            ser = ServiceManage()
+            print("Pi Powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
+            
             inst = Exec()
             inst.m_start()
         elif argv[0] == "stop":

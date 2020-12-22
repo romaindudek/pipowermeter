@@ -57,32 +57,16 @@ class AppInit:
         """
         Print system information and ask for action if system is not Raspberry pi
         """
-        if(self.system.machine != "arm"):
+        if("arm" not in self.system.machine):
             q = input(f"{bcolors.WARNING}Warning:  {self.system.sysname} / {self.system.machine} is probably not a Raspberry pi, do you want to continue (y/n)? {bcolors.ENDC}")
             if (q != "y"):
                 print("Setup is stopped")
                 sys.exit()
         else:
-            print(f"{bcolors.OKGREEN}self.system.sysname self.system.machine{bcolors.ENDC}")
+            print(f"{bcolors.OKGREEN}{self.system.sysname} / {self.system.machine} seems to be a Raspberry Pi !{bcolors.ENDC}")
 
 
-class Installation:
-    """
-    Functions used for installation and desinstallation purposes
-    """
 
-    def __init__(self):
-        AppInit().sys_check()
-        self.service_present = True if subprocess.run(["sudo apt list --installed 2>/dev/null | grep pipowermeter"], shell=True).returncode != 1 else False
-    
-    def install(self):
-        print("Start Installing !")
-
-    def uninstall(self):
-        print("Start Uninstalling !")
-
-    def trash(self):
-        print("Start Trashing !")
 
 class Exec:
     """

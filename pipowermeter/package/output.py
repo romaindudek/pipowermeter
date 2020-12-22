@@ -17,7 +17,7 @@ def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
     with open(file_name, 'a+', newline='') as write_obj:
         # Create a writer object from csv module
-        csv_writer = writer(write_obj)
+        csv_writer = writer(write_obj, delimiter=mySettings.csvSep)
         # Add contents of list as last row in the csv file
         csv_writer.writerow(list_of_elem)
 
@@ -36,7 +36,7 @@ class OutputMeasure:
         dt = self.currentDT.strftime("%Y%m%d%H%M%S")
         readableDT = self.currentDT.strftime("%Y/%m/%d at %H:%M:%S")
         value = [dt,mySettings.deviceName,mySettings.location,readableDT,self.measure.power, round(self.measure.power/3600*mySettings.timeDelay,3),self.w['temp'],self.w['wind'],self.w['clouds']]
-        append_list_as_row(mySettings.datas + "test.csv", value)
+        append_list_as_row(mySettings.datas + f"{mySettings.projectName}.csv", value)
         return value
     
     def get_weather_cast(self):
