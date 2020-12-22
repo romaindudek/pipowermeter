@@ -3,7 +3,7 @@
 
 import os
 
-from .functions import pickle_gt_or_set, pickle_wr
+from .functions import pickle_get_or_set, pickle_wr
 
 class MySettings:
     """
@@ -16,7 +16,9 @@ class MySettings:
         self.baseDir = self.get_or_set_local("baseDir", self.baseDir, hide=True)['varSet']
         self.datas = self.local_dir("datas")
         self.deviceName = self.get_or_set_local("deviceName", "pipowermeter1", hide=True)['varSet']
-        self.location = self.get_or_set_local("location", "Dieppe", hide=True)['varSet']
+        self.location = self.get_or_set_local("location", "Dieppe, fr", hide=True)['varSet']
+        self.apiKey = self.get_or_set_local("apiKey", "5c251aced57c6b2047d84c87e7bff45d", hide=True)['varSet']
+        self.timeDelay = self.get_or_set_local("timeDelay", 20, hide=True)['varSet'] #delta time in seconds
     
     def get_or_set_local(self, localSetting, settingValue, hide=False):
         """
@@ -27,7 +29,7 @@ class MySettings:
             localFilePath = self.locals + '.' + localSetting
         else:
             localFilePath = self.locals + localSetting
-        return pickle_gt_or_set(localFilePath, settingValue)
+        return pickle_get_or_set(localFilePath, settingValue)
 
     def overwrite_local(self, localSetting, settingValue, hide=False):
         """

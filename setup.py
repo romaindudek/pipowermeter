@@ -3,15 +3,22 @@
 import sys
 import time
 
+
 from pipowermeter.package.functions import *
-from pipowermeter.package.output import OutputMeasure
+from pipowermeter.package.output import OutputMeasure, mySettings
 
 
 def main(argv):
+    
+    while True:
+        output = OutputMeasure()
+        output.print_measure()
+        output.line_measure()
+        time.sleep(mySettings.timeDelay)
+    
 
-    output = OutputMeasure()
-    output.print_measure()
-    print(output.line_measure())
+
+    
 
     init = AppInit()
     init.prt_header()

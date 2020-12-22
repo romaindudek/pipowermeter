@@ -5,7 +5,7 @@ import sys
 import subprocess
 import pickle
 
-def pickle_gt_or_set(filePath, varSet):
+def pickle_get_or_set(filePath, varSet):
     """
     Get or sets datas in a pickle file,
     creates it if it is not present.
