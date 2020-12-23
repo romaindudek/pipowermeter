@@ -3,8 +3,6 @@
 import csv
 import datetime
 import requests
- 
-
 
 from .settings import MySettings
 from .measurement import PowerMeasure
@@ -30,12 +28,12 @@ class OutputMeasure:
 
     def print_measure(self):
         dt = self.currentDT.strftime("%Y/%m/%d at %H:%M:%S")
-        print(f"Time: {dt} | Device name: {mySettings.deviceName} | Location: {mySettings.location} | Power: {self.measure.power}W | Consumption: {round(self.measure.power/3600*mySettings.timeDelay,3)}Wh | Temperature : {self.w['temp']}°C | Wind : {self.w['wind']}Km/h | Clouds : {self.w['clouds']}%")
+        print(f"Time: {dt} | Device name: {mySettings.deviceName} | Location: {mySettings.location} | Power: {self.measure.power}W | Consumption: {round(self.measure.power/3600*int(mySettings.timeDelay),3)}Wh | Temperature : {self.w['temp']}°C | Wind : {self.w['wind']}Km/h | Clouds : {self.w['clouds']}%")
 
     def line_measure(self):
         dt = self.currentDT.strftime("%Y%m%d%H%M%S")
         readableDT = self.currentDT.strftime("%Y/%m/%d at %H:%M:%S")
-        value = [dt,mySettings.deviceName,mySettings.location,readableDT,self.measure.power, round(self.measure.power/3600*mySettings.timeDelay,3),self.w['temp'],self.w['wind'],self.w['clouds']]
+        value = [dt,mySettings.deviceName,mySettings.location,readableDT,self.measure.power, round(self.measure.power/3600*int(mySettings.timeDelay),3),self.w['temp'],self.w['wind'],self.w['clouds']]
         append_list_as_row(mySettings.datas + f"{mySettings.projectName}.csv", value)
         return value
     

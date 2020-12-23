@@ -3,9 +3,10 @@
 import sys
 import time
 
-
 from pipowermeter.package.functions import *
-from pipowermeter.package.installation import Installation
+from pipowermeter.package.settings import *
+from pipowermeter.package.installation import *
+
 
 
 def main(argv):
@@ -34,12 +35,15 @@ def main(argv):
         elif argv[0] == "start":
             ser = ServiceManage()
             print("Pi Powermeter statuses : Loaded = %s | Active = %s" % (ser.isLoaded, ser.isActive))
-            
+            MySettings().set_local("record", True)
+
             inst = Exec()
             inst.m_start()
         elif argv[0] == "stop":
             inst = Exec()
             inst.m_stop()
+            MySettings().set_local("record", False)
+
         else:
             print (init.hstr)
             sys.exit()

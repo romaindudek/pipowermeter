@@ -5,6 +5,8 @@ import sys
 import subprocess
 import pickle
 
+from .messages import messages, bcolors
+
 def pickle_get_or_set(filePath, varSet):
     """
     Get or sets datas in a pickle file,
@@ -31,27 +33,13 @@ class AppInit:
     """
 
     def __init__(self):
-        self.app_name = "Pi PowerMeter"
-        self.version = "0.0.1"
-        self.sep  =  "###########################"
-        self.hstr = """
-* Usage : ./setup.py [option]
-
-* Available options :
-
-    install     : Install the application (questions will be asked)
-    uninstall   : Uninstall the application (wont remove data directory)
-    trash       : Uninstall the application and delete data directory
-
-    start       : Start new measurement project
-    stop        : Stop measurement project"""
         self.system = os.uname()
 
     def prt_header(self):
         """
         Print header
         """
-        print(f"{bcolors.HEADER}%s\n%s v %s\n%s{bcolors.ENDC}" %(self.sep, self.app_name, self.version, self.sep))
+        print(messages.LOGO + messages.HEADER)
         
     def sys_check(self):
         """
@@ -62,9 +50,6 @@ class AppInit:
             if (q != "y"):
                 print("Setup is stopped")
                 sys.exit()
-        else:
-            print(f"{bcolors.OKGREEN}{self.system.sysname} / {self.system.machine} seems to be a Raspberry Pi !{bcolors.ENDC}")
-
 
 
 
@@ -111,24 +96,7 @@ class ServiceManage:
 
 
 
-class bcolors:
-    """
-    Used for coloring text if needed
-    """
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
 
-    def disable(self):
-        self.HEADER = ''
-        self.OKBLUE = ''
-        self.OKGREEN = ''
-        self.WARNING = ''
-        self.FAIL = ''
-        self.ENDC = ''
 
 
     

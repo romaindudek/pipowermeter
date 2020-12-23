@@ -4,9 +4,10 @@
 import csv
 import datetime
 import requests
-from .functions import *
 
-from .settings import MySettings, propsArray
+from .functions import *
+from .settings import MySettings
+from .properties import appProperties
 
 class Installation:
     """
@@ -19,7 +20,7 @@ class Installation:
     
     def install(self):
         mySettings = MySettings()
-        for prop in propsArray:
+        for prop in appProperties.propsArray:
             if prop['name'] != 'record':
                 propVal = getattr(mySettings, prop['name'])
                 q = input(f"\n> The setting {bcolors.OKGREEN}\"{prop['name']}\"{bcolors.ENDC} is set to {bcolors.OKGREEN}\"{propVal}\"{bcolors.ENDC}, do you want to overwrite it (y/n)? ")
@@ -28,6 +29,7 @@ class Installation:
                     #q =q.replace(" ", "_")
                     mySettings.set_local(prop['name'], q)
                     print(f"  Setting \"{prop['name']}\" has been set to {bcolors.OKBLUE}\"{q}\"{bcolors.ENDC}")
+        print(messages.COMPLETEINSTALL)
 
     def uninstall(self):
         print("Start Uninstalling !")
