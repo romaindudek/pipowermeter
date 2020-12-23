@@ -77,7 +77,6 @@ pycairo==1.16.2
 pycodestyle==2.4.0
 pycrypto==2.6.1
 pyflakes==2.0.0
-pygame==1.9.4.post1
 Pygments==2.3.1
 PyGObject==3.30.4
 pyinotify==0.9.6
@@ -86,7 +85,6 @@ pylint==2.2.2
 pyOpenSSL==19.0.0
 pyparsing==2.2.0
 pyserial==3.4
-python-apt==1.8.4.1
 python-dateutil==2.7.3
 pyxdg==0.25
 pyzmq==17.1.2
