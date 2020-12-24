@@ -8,6 +8,7 @@ import requests
 from .functions import *
 from .settings import MySettings
 from .properties import appProperties
+from .service import ServiceManage
 
 class Installation:
     """
@@ -29,6 +30,25 @@ class Installation:
                     #q =q.replace(" ", "_")
                     mySettings.set_local(prop['name'], q)
                     print(f"  Setting \"{prop['name']}\" has been set to {bcolors.OKBLUE}\"{q}\"{bcolors.ENDC}")
+        serv = ServiceManage("pipowermeter")
+        print(f"\n  The service statuses are :\n  {bcolors.OKBLUE}Loaded : {serv.is_loaded} / Active : {serv.is_active}\n{bcolors.ENDC}")
+        if not serv.is_loaded or not serv.is_active:
+            q = input(f"> Do you want to {bcolors.OKGREEN}install/reinstall{bcolors.ENDC} the service (y/n)? ")
+            if q == "y":
+                serv.CheckRights() # Exits if not Super User
+                # Install the daemon
+                service_file_path = f"{mySettings.baseDir}{os.sep}pipowermeter"
+                fin = open(f"{service_file_path}.txt", "rt")
+                fout = open(f"{service_file_path}.service", "wt")
+                for line in fin:
+                    fout.write(line.replace("ExecStart=/usr/bin/python3", f"ExecStart=/usr/bin/python3 {service_file_path}.py"))
+                    print('.', end='')
+                print()
+                print(f"  Fichier {bcolors.OKGREEN}{service_file_path}.service{bcolors.ENDC} créé")
+                fin.close()
+                fout.close()
+
+        print(f"\n> Congratulations, Pi PowerMeter is installed... Measurements will be stored in {bcolors.OKGREEN}{mySettings.datas}{mySettings.projectName}.csv{bcolors.ENDC}")
         print(messages.COMPLETEINSTALL)
 
     def uninstall(self):
@@ -36,3 +56,5 @@ class Installation:
 
     def trash(self):
         print("Start Trashing !")
+
+

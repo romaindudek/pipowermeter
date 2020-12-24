@@ -18,7 +18,7 @@ def main(argv):
 
     if (len(argv) == 1):
         if argv[0] == '-h':
-            print (init.hstr)
+            print (messages.HELP)
             sys.exit()
         elif argv[0] == "install":
             inst = Installation()
@@ -45,10 +45,10 @@ def main(argv):
             MySettings().set_local("record", False)
 
         else:
-            print (init.hstr)
+            print (messages.HELP)
             sys.exit()
     else:
-            print (init.hstr)
+            print (messages.HELP)
             sys.exit()
 
 

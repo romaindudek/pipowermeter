@@ -57,6 +57,8 @@ class MySettings:
         if not os.path.exists(localdirname):
             os.makedirs(localdirname)
         return localdirname
+
+    
     
 # Functions ----------------------------------------------------------------
 

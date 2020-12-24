@@ -73,26 +73,7 @@ class Questions:
     def __init__(self, q):
         self.q = q
     
-class ServiceManage:
 
-    def __init__(self):
-        self.serviceName = "pipowermeter"
-        self.isActive = self.check_service_property("ActiveState")
-        self.isLoaded = self.check_service_property("LoadState")
-    
-    def check_service_property(self, propName):
-        ret = subprocess.run(["systemctl", "show", self.serviceName, "--property=" + propName], capture_output=True)
-        ret = self.active_state_from_stdout(ret.stdout, propName)
-        return ret
-
-    def active_state_from_stdout(self, stdoutStr, propName):
-        ret = stdoutStr.decode("utf-8")
-        rem = propName + "="
-        ret = ret.replace(rem, "").replace("\n", "")
-        if (ret == "active" or ret == "loaded"):
-            return True
-        else:
-            return False
 
 
 

@@ -6,7 +6,7 @@ from pipowermeter.package.functions import *
 from pipowermeter.package.output import OutputMeasure, mySettings
 
 
-print(f"{bcolors.FAIL}{messages.DEVIL}WARNING : I am the daemon !\nYou should not launch me this way unless \nyou are a developper or a maintainer, use \"./setup.py\" instead...\nPlease press ctrl+c asap to abort{bcolors.ENDC}")
+print(f"{bcolors.FAIL}{messages.DEVIL}WARNING : I am the daemon !\nThou shalt not launch me this way unless \nyou are a developper, a maintainer or a fool...\nUse \"./setup.py\" instead, and follow the instructions...\nPlease press ctrl+c asap to abort{bcolors.ENDC}")
 time.sleep(15)
 
 while True:

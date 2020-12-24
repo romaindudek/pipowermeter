@@ -5,3 +5,4 @@ pipowermeter/package/__pycache__/
 .DS_Store
 .locals
 datas/
+*.service

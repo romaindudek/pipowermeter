@@ -24,6 +24,8 @@ class messages:
 
 """
 
+    WARNING = f"""########################### {bcolors.FAIL}WARNING{bcolors.ENDC} ###########################"""
+
     COMPLETEINSTALL = f"""{bcolors.OKGREEN}
 The installation is {bcolors.OKGREEN}complete{bcolors.ENDC} , you can now start the measurement with {bcolors.OKGREEN}"./setup.py start"  {bcolors.ENDC}   
 """

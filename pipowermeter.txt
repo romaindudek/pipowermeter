@@ -1,0 +1,19 @@
+[Unit]
+Description=Pi PowerMeter daemon
+
+[Service]
+# Note: setting PYTHONUNBUFFERED is necessary to see the output of this service in the journal
+# See https://docs.python.org/2/using/cmdline.html#envvar-PYTHONUNBUFFERED
+Environment=PYTHONUNBUFFERED=true
+
+Type=idle
+Restart=always
+User=pi
+ExecStartPre=/bin/sleep 15
+ExecStart=/usr/bin/python3
+
+RestartSec=15
+
+[Install]
+# S'exécute dans le niveau d'exécution multi utilisateur
+WantedBy=multi-user.target
