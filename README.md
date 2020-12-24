@@ -5,7 +5,7 @@ Produces CSV files to be able to make statistics over a long period of time.
 ## Features
 
 - Continuously measure power
-- Set the periodicity of the measurement (in minutes)
+- Set the periodicity of the measurement (in seconds)
 - Generate .csv files
     - Append one line for every measure
     - date/time (yyyymmddhhmmss) | Device name | Device location | date/time (Human readable) | value (w) | consommation (since last measure, Wh) [ optional weather infos via openweathermap ]
