@@ -23,7 +23,7 @@ git clone https://github.com/romaindudek/pipowermeter.git
 
 The installer is setting up a service that will continuously take the measure. If for any reason the pi is shut down or the service is stopped, this service will automatically restart, preventing the measurement to stop.
 
-The csv files will be stored in the data directory inside the current directory. They are named using the patern : [Device name]_[YYYYmmddHHmm].csv using the starting date/time of the measure. 
+The csv files will be stored in the data directory inside the current directory. They are named using the patern : [Project name].csv
 
 Stopping the measure will not erase those files.
 
