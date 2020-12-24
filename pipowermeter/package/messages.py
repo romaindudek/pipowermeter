@@ -27,7 +27,12 @@ class messages:
     WARNING = f"""########################### {bcolors.FAIL}WARNING{bcolors.ENDC} ###########################"""
 
     COMPLETEINSTALL = f"""{bcolors.OKGREEN}
-The installation is {bcolors.OKGREEN}complete{bcolors.ENDC} , you can now start the measurement with {bcolors.OKGREEN}"./setup.py start"  {bcolors.ENDC}   
+The installation is {bcolors.OKGREEN}complete{bcolors.ENDC}, you can now start the measurement with {bcolors.OKGREEN}"./setup.py start"  {bcolors.ENDC}   
+"""
+
+    COMPLETEINSTALLRECORD = f"""{bcolors.OKGREEN}
+The installation is {bcolors.OKGREEN}complete{bcolors.ENDC}, and Pi PowerMeter is {bcolors.OKGREEN}recording{bcolors.ENDC}.
+You can stop recording anytime using {bcolors.OKGREEN}"./setup.py stop"{bcolors.ENDC}.
 """
 
     # asciiart ###############################################
