@@ -1,5 +1,6 @@
 # Pipowermeter
-Measure DC power out of a solar panel or a wind turbine with raspberry pi zero W using a DFrobot SEN0291 I2C wattmeter module to evaluate its efficiency.
+Measure DC power out of a solar panel or a wind turbine with any model of raspberry pi using a DFrobot SEN0291 I2C wattmeter module to evaluate power efficiency.
+Produces CSV files to be able to make statistics over a long period of time.
 
 ## Features
 
@@ -15,14 +16,19 @@ Measure DC power out of a solar panel or a wind turbine with raspberry pi zero W
 
 ## Usage
 
+
+```bash
+git clone https://github.com/romaindudek/pipowermeter.git
+```
+
 The installer is setting up a service that will continuously take the measure. If for any reason the pi is shut down or the service is stopped, this service will automatically restart, preventing the measurement ton stop.
 
 The csv files will be stored in the data directory inside the current directory. They are named using the patern : [Device name]_[YYYYmmddHHmm].csv using the starting date/time of the measure. 
 
 Stopping the measure will not erase those files.
 
-App instructions via :
+App installation and instructions via :
 ```bash
-./setup.py -h
+./setup.py
 ```
 
