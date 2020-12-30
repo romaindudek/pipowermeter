@@ -10,7 +10,7 @@ Produces CSV files to be able to make statistics over a long period of time.
 - Generate .csv files
     - Append one line for every measure
     - date/time (yyyymmddhhmmss) | Device name | Device location | date/time (Human readable) | value (w) | consommation (since last measure, Wh) [ optional weather infos via openweathermap ]
-- OpenWeathermap infos (you need an internet connection)
+- OpenWeathermap infos (you need an internet connection and an openweathermap api key)
     - Temperature (°C) | Wind speed (Km/h) | Cloudiness (%)
 
 ### Don't forget to use a resistor to dissipate the power !
